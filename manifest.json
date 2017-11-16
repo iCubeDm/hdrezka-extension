@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "HDrezka extension",
+  "version": "0.1.0",
+  "background": {
+    "persistent": true,
+    "scripts": ["background.js", "jquery-3.2.1.js"]
+  },
+  "permissions": [
+    "http://hdrezka.ag/*",
+    "activeTab",
+    "tabs",
+    "storage"
+  ],
+  "browser_action": {
+    "default_popup": "popup.html"
+  }
+}
