@@ -1,2 +1,2 @@
 # hdrezka-extension
-Useful Chrome extension for the hdrezka.ag
+Useful Chrome extension for the [hdrezka.ag](http://hdrezka.ag)
