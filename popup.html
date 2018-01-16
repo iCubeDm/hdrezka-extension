@@ -1,28 +1,49 @@
-<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <script type="text/javascript" src="jquery-3.2.1.js"></script>
-    <script type="text/javascript" src="popup.js"></script>
-    <link href="style.css" rel="stylesheet">
+
+    <title>HDRezka Extension</title>
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap-theme.min.css">
+
+    <script type='text/javascript' src='./js/dist/jquery.min.js'></script>
+    <script type='text/javascript' src='./js/dist/bootstrap.min.js'></script>
+
+    <script type='text/javascript' src='./js/dist/chrome-extension-async.js'></script>
+    <script type='text/javascript' src='./js/content.js'></script>
+
+    <script src='./js/dist/vue.js'></script>
 </head>
 <body>
-<div class="container">
-    <div class="popup-title">Настройки</div>
-    <div class="content">
+<div id="app" class="container-fluid">
+    <!-- app goes in here-->
+    <div>
+        <h3>HDRezka Extension</h3>
+        <hr>
+        <h4>Настройки</h4>
         <div class="serial">
             <table>
                 <tr>
                     <td>Автопроигрывание:</td>
-                    <td><input type="checkbox" id="autoplay"></td>
+                    <td><input type="checkbox" id="autoplay" v-bind="isAutoplay"></td>
                 </tr>
             </table>
         </div>
+        <div>
+            <button class="btn btn-default" @click="checkForChanges">Check</button>
+        </div>
     </div>
+    <h3>Stat:</h3>
+    <pre id="stat">
+serial:         {{props.serial}}
+maxSeasons:     {{props.maxSeasons}}
+maxEpisodes:    {{props.maxEpisodes}}
+currentSeason:  {{props.currentSeason}}
+currentEpisode: {{props.currentEpisode}}
+autoplay:       {{props.isAutoplay}}
+    </pre>
+    <script src="./js/app.js"></script>
 </div>
-<h3>stat</h3>
-<pre id="stat">
-
-</pre>
 </body>
 </html>

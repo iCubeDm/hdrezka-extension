@@ -9,8 +9,19 @@
     "storage",
     "management"
   ],
+  "content_scripts": [
+    {
+      "js": [
+        "js/dist/jquery.min.js",
+        "js/content.js"
+      ],
+      "matches": [
+        "http://hdrezka.ag/*"
+      ]
+    }
+  ],
   "browser_action": {
-    "default_popup": "index.html"
+    "default_popup": "popup.html"
   },
   "icons": {
     "48": "./img/hdrezka.png"
