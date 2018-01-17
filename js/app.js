@@ -42,12 +42,17 @@ let stats = {
   },
 
   checkForChanges: async function () {
-      return await this.updateStat()
+    if (await tabAction('isEpisodeFinished')) {
+      await tabAction('nextEpisode')
+      return this.updateStat()
+    }
+    return this.updateStat()
   },
 
-  switchEpisode: async function () {
-    console.log('Switch episode')
-    await tabAction('chan')
+  nextEpisode: async function () {
+    console.log('next episode')
+    await tabAction('nextEpisode')
+    return this.updateStat()
   }
 }
 
@@ -63,6 +68,19 @@ let vm = new Vue({
       console.log('checking for changes')
 
       let response = await stats.checkForChanges()
+
+      console.log(response)
+
+      Vue.set(this.props, 'serial', response.serial)
+      Vue.set(this.props, 'maxSeasons', response.maxSeasons)
+      Vue.set(this.props, 'maxEpisodes', response.maxEpisodes)
+      Vue.set(this.props, 'currentSeason', response.currentSeason)
+      Vue.set(this.props, 'currentEpisode', response.currentEpisode)
+    },
+    nextEpisode: async function () {
+      console.log('checking for changes')
+
+      let response = await stats.nextEpisode()
 
       console.log(response)
 

@@ -24,13 +24,18 @@ let contentParser = {
     $('div#player').hasClass('is-finished')
   },
 
-  nextEpisode: function nextEpisode(){
-    console.log("changing episode")
-  },
+  nextEpisode: function nextEpisode () {
+    let currentSeason = this.getCurrentSeason() * 1
+    let nextEpisode = this.getCurrentEpisode() * 1 + 1
+    console.log('switching')
+    $(`#simple-episodes-list-${currentSeason} > li:nth-child(${nextEpisode})`).click()
+    console.log('switched')
+    console.log('starting')
+    let sourceUrl = $('#cdn-player').attr('src')
+    $('#cdn-player').attr('src', sourceUrl+'&autoplay=1')
+    console.log('started')
 
-  clickOnSelector: function clickOnSelector (selector) {
-    console.log('clicking on ' + selector)
-  }
+  },
 }
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendMessage) {
@@ -53,8 +58,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendMessage) {
     case 'isEpisodeFinished':
       sendMessage({data: contentParser.isEpisodeFinished()})
       break
-    case 'clickOnSelector':
-      sendMessage({data: contentParser.clickOnSelector()})
+    case 'nextEpisode':
+      sendMessage({data: contentParser.nextEpisode()})
       break
     default:
       sendMessage({})

@@ -3,11 +3,9 @@
   "name": "HDrezka extension",
   "version": "0.1.0",
   "permissions": [
-    "http://hdrezka.ag/*",
-    "activeTab",
+    "http://*/*",
     "tabs",
-    "storage",
-    "management"
+    "storage"
   ],
   "content_scripts": [
     {

@@ -18,20 +18,26 @@
 <body>
 <div id="app" class="container-fluid">
     <!-- app goes in here-->
-    <div>
-        <h3>HDRezka Extension</h3>
-        <hr>
-        <h4>Настройки</h4>
-        <div class="serial">
-            <table>
-                <tr>
-                    <td>Автопроигрывание:</td>
-                    <td><input type="checkbox" id="autoplay" v-bind="isAutoplay"></td>
-                </tr>
-            </table>
-        </div>
-        <div>
-            <button class="btn btn-default" @click="checkForChanges">Check</button>
+    <h3>HDRezka Extension</h3>
+    <hr>
+    <h4>Настройки</h4>
+    <div class="row">
+        <div class="form-inline">
+            <div class="form-group">
+                <div class="col-sm-1">Автопроигрывание:</div>
+                <div class="col-sm-1">
+                    <input type="checkbox" id="autoplay" v-bind="isAutoplay">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <button class="btn btn-default" @click="checkForChanges">Check</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-success" @click="nextEpisode">Next</button>
+                </div>
+            </div>
         </div>
     </div>
     <h3>Stat:</h3>
@@ -42,8 +48,8 @@ maxEpisodes:    {{props.maxEpisodes}}
 currentSeason:  {{props.currentSeason}}
 currentEpisode: {{props.currentEpisode}}
 autoplay:       {{props.isAutoplay}}
-    </pre>
-    <script src="./js/app.js"></script>
+</pre>
+<script src="./js/app.js"></script>
 </div>
 </body>
 </html>
